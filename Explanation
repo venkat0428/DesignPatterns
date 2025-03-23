@@ -1,0 +1,121 @@
+Decorator Design Pattern
+
+The Decorator Design Pattern is a structural pattern that allows you to dynamically add or modify behavior of an object without altering its original code.
+It uses composition over inheritance, making it more flexible and extensible.
+
+✅ When to Use the Decorator Pattern?
+
+When you want to add responsibilities dynamically to individual objects, not to the entire class.
+When subclassing would create an explosion of classes for every combination of behaviors.
+When you want to follow the Open/Closed Principle → You can add new functionality without modifying existing code.
+When you want to create a flexible, reusable, and modular design.
+
+🔥 Why Use the Decorator Pattern?
+
+Flexible extension → Add functionality at runtime without modifying existing classes.
+Avoids subclass explosion → You don’t need to create multiple subclasses for different combinations of behaviors.
+Enhances readability and maintainability → Keeps the code modular and clean.
+Supports Single Responsibility Principle → Each decorator handles one functionality.
+
+
+1️⃣ Component Interface
+Defines the common interface that both the base class and decorators will implement.
+
+interface Coffee {
+    double cost();
+    String getDescription();
+}
+
+2️⃣ Concrete Component
+Implements the base functionality.
+
+class SimpleCoffee implements Coffee {
+    @Override
+    public double cost() {
+        return 5;  // Base cost
+    }
+
+    @Override
+    public String getDescription() {
+        return "Simple Coffee";
+    }
+}
+
+3️⃣ Abstract Decorator
+Wraps around the Coffee object and extends its behavior.
+
+abstract class CoffeeDecorator implements Coffee {
+    protected Coffee coffee;
+
+    public CoffeeDecorator(Coffee coffee) {
+        this.coffee = coffee;
+    }
+
+    @Override
+    public double cost() {
+        return coffee.cost();
+    }
+
+    @Override
+    public String getDescription() {
+        return coffee.getDescription();
+    }
+}
+
+4️⃣ Concrete Decorators
+Add new behavior by extending the CoffeeDecorator.
+
+class MilkDecorator extends CoffeeDecorator {
+    public MilkDecorator(Coffee coffee) {
+        super(coffee);
+    }
+
+    @Override
+    public double cost() {
+        return super.cost() + 1.5;  // Add milk cost
+    }
+
+    @Override
+    public String getDescription() {
+        return super.getDescription() + ", Milk";
+    }
+}
+
+class SugarDecorator extends CoffeeDecorator {
+    public SugarDecorator(Coffee coffee) {
+        super(coffee);
+    }
+
+    @Override
+    public double cost() {
+        return super.cost() + 0.5;  // Add sugar cost
+    }
+
+    @Override
+    public String getDescription() {
+        return super.getDescription() + ", Sugar";
+    }
+}
+
+5️⃣ Using the Decorator Pattern
+
+public class Main {
+    public static void main(String[] args) {
+        // Base coffee
+        Coffee coffee = new SimpleCoffee();
+        System.out.println(coffee.getDescription() + " -> $" + coffee.cost());
+
+        // Add milk decorator
+        coffee = new MilkDecorator(coffee);
+        System.out.println(coffee.getDescription() + " -> $" + coffee.cost());
+
+        // Add sugar decorator
+        coffee = new SugarDecorator(coffee);
+        System.out.println(coffee.getDescription() + " -> $" + coffee.cost());
+
+}
+}
+
+Simple Coffee -> $5.0  
+Simple Coffee, Milk -> $6.5  
+Simple Coffee, Milk, Sugar -> $7.0  
