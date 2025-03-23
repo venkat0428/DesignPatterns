@@ -45,6 +45,24 @@ Unmanageable Complexity: The codebase becomes hard to navigate and maintain.
 Difficult to Extend: Adding a new feature requires creating multiple new subclasses.
 Tight Coupling: It creates a strong dependency between classes, making the system less flexible.
 
+
+🌟 Why You Should Use Decorators Instead of Inheritance with Constructors
+✅ 1. No Class Explosion:
+
+Using decorators, you add new behaviors dynamically without creating subclasses.
+Adding a new add-on just requires creating a new decorator, not multiple subclasses.
+✅ 2. Better Flexibility and Extensibility:
+
+Decorators can be added at runtime, allowing for dynamic combinations of add-ons.
+You don't have to define all possible combinations in advance.
+✅ 3. Open/Closed Principle:
+
+Decorators extend functionality without modifying existing classes.
+Adding new decorators does not affect the existing coffee classes.
+✅ 4. Fewer Classes → Easier Maintenance:
+
+With decorators, you only need one decorator class per add-on, no matter how many combinations you create.
+
 🚦 Key Takeaway
 
 🚫 Inheritance-based approach:
