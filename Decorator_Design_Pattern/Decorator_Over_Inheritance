@@ -1,0 +1,58 @@
+🌋 Class Explosion Problem
+
+The Class Explosion Problem occurs when you rely heavily on inheritance to add or combine multiple features, leading to an excessive number of subclasses.
+As the number of combinations increases, the number of classes grows exponentially, making the system difficult to maintain and extend.
+
+✅ Why Does the Class Explosion Problem Occur?
+
+When you use inheritance to add functionalities, you create subclasses for every possible combination of features.
+As more features are added, you need to create new subclasses for each combination, leading to code duplication and an unmanageable number of classes.
+
+🚀 Example: Class Explosion with Coffee Variants
+
+Imagine you're building a coffee ordering system.
+You want to support the following combinations of coffee:
+
+Base types: Coffee, Espresso, Latte.
+Add-ons: Milk, Sugar, Caramel, and Whipped Cream.
+
+🔥 Using Inheritance → Class Explosion
+If you use inheritance to represent every combination of coffee and add-ons, you end up with:
+
+Base Classes:
+- Coffee
+- Espresso
+- Latte
+
+Combinations:
+- CoffeeWithMilk
+- CoffeeWithSugar
+- CoffeeWithMilkAndSugar
+- CoffeeWithCaramel
+- EspressoWithMilk
+- EspressoWithSugar
+- EspressoWithCaramel
+- LatteWithMilk
+- LatteWithSugar
+- LatteWithCaramel
+- LatteWithMilkAndSugar
+- EspressoWithMilkAndCaramel
+- ... (many more)
+
+💡 Why Is This a Problem?
+Code Duplication: Each subclass duplicates code from its parent class, making changes tedious.
+Unmanageable Complexity: The codebase becomes hard to navigate and maintain.
+Difficult to Extend: Adding a new feature requires creating multiple new subclasses.
+Tight Coupling: It creates a strong dependency between classes, making the system less flexible.
+
+🚦 Key Takeaway
+
+🚫 Inheritance-based approach:
+Leads to class explosion.
+Hard to maintain and extend.
+Requires multiple subclasses for every combination.
+
+✅ Decorator-based approach:
+Flexible and dynamic behavior addition at runtime.
+Easy to extend with new decorators.
+No class explosion → Uses composition instead of inheritance.
